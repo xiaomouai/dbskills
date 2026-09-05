@@ -1,6 +1,6 @@
 # dbskills
 
-通用商业与内容运营 Skills。
+从需求与流量、内容、线索、销售、交付到复购的通用商业闭环项目。适用于C端或B端产品、App、SaaS、课程和服务。
 
 ## content-revenue-loop
 
@@ -10,6 +10,31 @@
 
 ```text
 使用 content-revenue-loop，为我的产品检查流量、内容和销售闭环，找出最早断点，并给出一轮可验证行动。
+```
+
+## 工作台
+
+工作台用 Python 标准库保存业务真源、任务依赖、Agent 提示词和验收状态，不需要安装依赖。
+
+```bash
+python3 workbench.py init
+python3 workbench.py plan --request "为我的产品建立商业闭环" --mode full --track consumer
+python3 workbench.py status
+python3 workbench.py verify
+```
+
+企业产品使用 `--track business`。打开 `runtime/index.html` 查看状态。每个任务按 `start → 生成产物 → complete` 登记；具体命令见[使用说明](docs/usage.md)。
+
+仓库不提交实际运行产生的 `runtime/`，防止客户资料、内容和订单进入版本库。
+
+## 项目结构
+
+```text
+skills/content-revenue-loop/SKILL.md  通用Agent入口
+workbench.py                          本地任务和状态工作台
+test_workbench.py                     最小行为测试
+docs/architecture.md                  闭环和角色边界
+docs/usage.md                         命令与宿主使用方法
 ```
 
 ## 设计参考
